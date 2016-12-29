@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta charset="utf-8">
+    <title>Dump Trump</title>
+    <meta name="description" content="Counting down until the 2021 Presidential inauguration.">
+    <meta name="author" content="Charlotte Trible">
+
+    <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link href="https://fonts.googleapis.com/css?family=Kumar+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Squada+One" rel="stylesheet">
+
+    <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
+</head>
+
+<body>
+
+    <!-- Primary Page Layout
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <div class="wrapper">
+
+    <div class="header">
+      <h1>When the fuck do we get to dump Trump?</h1>
+    </div>
+
+    <div id="clockdown" class="countdown">
+        <div class="countdown__segment">
+            <h2><span class="days"></span> Days</h2>
+        </div>
+        <div class="countdown__segment">
+            <h2><span class="hours"></span> Hours</h2>
+        </div>
+        <div class="countdown__segment">
+            <h2><span class="minutes"></span> Minutes</h2>
+        </div>
+    </div>
+  </div>
+
+    <script>
+        function getTimeRemaining(endtime) {
+            var t = Date.parse(endtime) - Date.parse(new Date());
+            var minutes = Math.floor((t / 1000 / 60) % 60);
+            var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+            var days = Math.floor(t / (1000 * 60 * 60 * 24));
+            return {
+                'total': t,
+                'minutes': minutes,
+                'hours': hours,
+                'days': days
+            };
+        }
+
+        function initializeClock(id, endtime) {
+            var clock = document.getElementById(id);
+            var minutesSpan = clock.querySelector('.minutes');
+            var hoursSpan = clock.querySelector('.hours');
+            var daysSpan = clock.querySelector('.days');
+
+            function updateClock() {
+                var t = getTimeRemaining(endtime);
+
+                daysSpan.innerHTML = t.days;
+                hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+                minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+
+                if (t.total <= 0) {
+                    clearInterval(timeinterval);
+                }
+            }
+
+            updateClock();
+            var timeinterval = setInterval(updateClock, 1000);
+        }
+
+        var deadline = new Date('January 20 2021');
+        initializeClock('clockdown', deadline);
+    </script>
+
+    <!-- End Document
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+</body>
+
+</html>
