@@ -51,6 +51,9 @@ h2 {
   background-image: image-set( "../img/fucktrump50.jpg" 1x,
                              "../img/fucktrump100.jpg" 2x);
   background-position: center;
+  @media (max-width: 900px) {
+    background-position: 66%;
+  }
 }
 
 .header {

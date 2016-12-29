@@ -40,6 +40,9 @@ h2 {
   background-image: url("../img/fucktrump50.jpg");
   background-image: image-set("../img/fucktrump50.jpg" 1x, "../img/fucktrump100.jpg" 2x);
   background-position: center; }
+  @media (max-width: 900px) {
+    .wrapper {
+      background-position: 66%; } }
 
 .header {
   background-color: rgba(247, 74, 67, 0.85);
